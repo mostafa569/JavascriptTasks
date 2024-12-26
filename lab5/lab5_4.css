@@ -1,0 +1,29 @@
+form {
+    width: 500px;
+    margin: 0 auto;
+    
+}
+ 
+label, input {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+
+label {
+    width: 70px;  
+    margin-right: 0px;
+}
+
+input {
+    width: auto;  
+    margin-bottom: 5px;  
+}
+
+#submit{
+    background-color: green;
+}
+
+#reset{
+    background-color: red;
+}

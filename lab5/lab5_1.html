@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./lab5_1.css" rel="stylesheet">
+</head>
+<body>
+    
+    <form>
+        <input  type="text" name="studentName" id="studentName" placeholder="Enter Student Name">
+        <p id="NameHandling"></p>
+        <input type="text" name="studentAge" id="studentAge" placeholder="Enter Student Age">
+        <p id="AgeHandling"></p>
+        <button type="button" onclick="addRow()">Submit</button>
+    </form>
+
+    <table id="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            
+        </tbody>
+    </table>
+    <script src="lab5_1.js"></script>
+</body>
+</html>
+
