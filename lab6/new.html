@@ -3,59 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Page</title>
+    <title>User Information</title>
 </head>
 <body>
+ 
+    <div id="content"></div>
+
     <script>
-       
         window.onload = function() {
-            var counter = parseInt(getCookie("counter") || "0");
-            counter++; 
+        
+            const name = getCookie("name");
+            const email = getCookie("email");
+            const color = getCookie("color");
+
+            let counter = parseInt(getCookie("counter") || "0");
+            counter++;  
             saveCookie("counter", counter);
-            
-            var img = document.createElement("img");
-            
-            var male = window.opener.document.getElementById('male');
-            var female = window.opener.document.getElementById('female');
-            
-            if (male && male.checked) {
-                img.setAttribute('src', './images/1.jpg');
-            } else if (female && female.checked) {
-                img.setAttribute('src', './images/2.jpg');
+            const contentDiv = document.getElementById("content");
+
+            contentDiv.innerHTML = `
+                <p style="color: ${color};"> ${name}</p>
+               <p><strong>Email:</strong> ${email}</p>
+                <p style="color: ${color};"> ${counter}</p>
+            `;
+            const img = document.createElement("img");
+            const gender = getCookie("gender");
+
+            if (gender === "male") {
+                img.setAttribute("src", "./images/1.jpg");
+            } else if (gender === "female") {
+                img.setAttribute("src", "./images/2.jpg");
             }
-            
-            document.body.appendChild(img);
-           
-            var nameText = document.createElement("p");
-            nameText.textContent = "Name: " + getCookie("name");
-            document.body.appendChild(nameText);
-
-            var emailText = document.createElement("p");
-            emailText.textContent = "Email: " + getCookie("email");
-            document.body.appendChild(emailText);
-
-            var counterText = document.createElement("p");
-            counterText.textContent = "Page Reload Counter: " + getCookie("counter");
-            document.body.appendChild(counterText);
+            contentDiv.appendChild(img);
         };
 
-        
-        function saveCookie(key, value) {
-            var expireDate = new Date();
-            expireDate.setDate(expireDate.getDate() + 3);  
-            document.cookie = `${key}=${value};expires=${expireDate};path=/`;
-        }
-
-       
+    
         function getCookie(key) {
             const cookies = document.cookie.split(';');
             for (let cookie of cookies) {
-                if (cookie.trim().startsWith(key + '=')) {
-                    return cookie.substring(key.length + 1).trim();
-                }
+                const [k, v] = cookie.trim().split('=');
+                if (k === key) return v;
             }
-            return null;
+            return '';
+        }
+
+        function saveCookie(key, value) {
+            const expireDate = new Date();
+            expireDate.setDate(expireDate.getDate() + 3);  
+            document.cookie = `${key}=${value};expires=${expireDate.toUTCString()};path=/`;
         }
     </script>
+
 </body>
 </html>
